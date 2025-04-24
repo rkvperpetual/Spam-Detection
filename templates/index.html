@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email/SMS Spam Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0e0e0e;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1512453979799-3f7b10bca020'); /* Tech Background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ff6600;
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ff6600;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        button {
+            background-color: #ff6600;
+            padding: 12px 25px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .input-message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff;
+            font-weight: normal;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Email/SMS Spam Classifier</h1>
+        <form action="/predict" method="post">
+            <textarea name="message" placeholder="Enter the message here...">{{ input_sms }}</textarea><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Result: {{ prediction }}</h2>
+        </div>
+
+        <div class="input-message">
+            <p><strong>Input Message:</strong> {{ input_sms }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>Made with ❤️ by <a href="https://your-portfolio-link.com" target="_blank">Raj, Harsh and Akshat</a></p>
+    </div>
+</body>
+</html>
